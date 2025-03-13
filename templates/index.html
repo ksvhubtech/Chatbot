@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+    font-family: 'Poppins', sans-serif;
+    background: url('{{ url_for("static", filename="BG.png") }}') no-repeat center center fixed;
+    background-size: cover;
+    color: #007bff;
+    text-align: center;
+    padding: 20px;
+}
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05); 
+            border-radius: 15px;
+            backdrop-filter: blur(3px); 
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h2, h3, p {
+            color: #007bff;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #007bff;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 6px;
+            background: rgba(0, 123, 255, 0.7);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: rgba(0, 86, 179, 0.8);
+        }
+
+        .answer-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #007bff;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .image-container img {
+            width: 180px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .download-btn {
+            display: block;
+            margin-top: 5px;
+            padding: 8px;
+            background: rgba(0, 123, 255, 0.7);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .download-btn:hover {
+            background: rgba(0, 86, 179, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Chatbot</h2>
+        <form method="POST">
+            <input type="text" name="query" placeholder="Ask me anything..." required>
+            <button type="submit">Get Answer</button>
+        </form>
+
+        {% if answer %}
+        <div class="answer-section">
+            <h3>Answer:</h3>
+            <p>{{ answer }}</p>
+        </div>
+        {% endif %}
+
+        {% if images %}
+        <h3>Related Images:</h3>
+        <div class="image-container">
+            {% for image_url in images %}
+                <div>
+                    <img src="{{ image_url }}" alt="Related Image">
+                    <a href="{{ image_url }}" download class="download-btn">Download</a>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
