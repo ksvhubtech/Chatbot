@@ -50,11 +50,23 @@ pip install -r requirements.txt
 ## 🖼️ Sample Output
 
 <p align="center">
-  <img src="SAMPLE 1.png" alt="Output Sample" width="700"/>
+  <img src="1.png" alt="Output Sample" width="700"/>
 </p>
 <p align="center">
-  <img src="SAMPLE 2.png" alt="Output Sample" width="700"/>
+  <img src="2.png" alt="Output Sample" width="700"/>
 </p>
+<p align="center">
+  <img src="3.png" alt="Output Sample" width="700"/>
+</p>
+
+<p align="center">
+  <img src="4.png" alt="Output Sample" width="700"/>
+</p>
+
+<p align="center">
+  <img src="5.png" alt="Output Sample" width="700"/>
+</p>
+
 
 ---
 
